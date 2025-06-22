@@ -1,4 +1,4 @@
-CREATE TABLE cliente IF NOT EXISTS clientes (
+CREATE TABLE cliente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo_documento ENUM('DNI', 'Carnet de extranjería') NOT NULL,
     numero_documento VARCHAR(20) NOT NULL UNIQUE,
