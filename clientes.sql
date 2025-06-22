@@ -15,7 +15,7 @@ CREATE TABLE cliente (
 );
 
 
-CREATE TABLE parametros_globales IF NOT EXISTS parametros_globales (
+CREATE TABLE parametros_globales (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE,
     valor boolean NOT NULL,
