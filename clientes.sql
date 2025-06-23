@@ -17,9 +17,10 @@ CREATE TABLE cliente (
 
 CREATE TABLE parametros_globales (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL UNIQUE,
+    descripcion VARCHAR(100) NOT NULL UNIQUE,
     valor boolean NOT NULL,
-    descripcion TEXT,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+Insert into parametros_globales (descripcion, valor) 
+values ('envio_correo', true);
