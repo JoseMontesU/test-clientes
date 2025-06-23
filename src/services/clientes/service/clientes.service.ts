@@ -25,11 +25,20 @@ export class ClientesService {
             };
         }
         
-        const envioCorreoConfig = await this.cacheService.getEnvioCorreoConfig();
-        console.log('Envio Correo Config Perrroeeereer:', envioCorreoConfig);
-
-        await lastValueFrom(this.clientCorreos.send('ENVIAR_CORREO', 
+        const envioCorreoConfig: any = await this.cacheService.getEnvioCorreoConfig();
+        
+        if (!envioCorreoConfig) {
+            return {
+                success: false,
+                message: 'Failed to retrieve email configuration',
+                data: null,
+            };
+        } else if (envioCorreoConfig.descripcion === 'envio_correo' && 
+            envioCorreoConfig.valor === true
+        ) {
+            await lastValueFrom(this.clientCorreos.send('ENVIAR_CORREO', 
             { asunto: "Bienvenida", mensaje: "Hola usted es un ludopata", estado: "ENVIADO" }));
+        }        
 
         return {
             success: true,
