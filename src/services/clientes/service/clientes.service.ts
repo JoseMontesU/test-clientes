@@ -37,7 +37,7 @@ export class ClientesService {
             envioCorreoConfig.valor === true
         ) {
             await lastValueFrom(this.clientCorreos.send('ENVIAR_CORREO', 
-            { asunto: "Bienvenida", mensaje: "Hola usted es un ludopata", estado: "ENVIADO" }));
+            { asunto: "Bienvenida", mensaje: "Bienvedio, gracias por registrarte ", estado: "ENVIADO" }));
         }        
 
         return {
