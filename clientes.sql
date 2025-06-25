@@ -14,7 +14,7 @@ CREATE TABLE cliente (
     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-
+DROP TABLE IF EXISTS parametros_globales;
 CREATE TABLE parametros_globales (
     id INT AUTO_INCREMENT PRIMARY KEY,
     descripcion VARCHAR(100) NOT NULL UNIQUE,

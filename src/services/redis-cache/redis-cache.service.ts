@@ -14,7 +14,6 @@ export class RedisCacheService implements OnModuleInit{
     async onModuleInit() {
         const data = await this.parametrosService.findByDescripcion('envio_correo');
         await this.cacheManager.set('config:envio_correo', data);
-        console.log('Cache initialized with envio_correo parameter', data);
     }
 
     async getEnvioCorreoConfig() {
