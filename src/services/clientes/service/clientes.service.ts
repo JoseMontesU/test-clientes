@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { ClientProxyMicroservice } from 'src/helper/proxy/client.proxy';
 import { RedisCacheService } from 'src/services/redis-cache/redis-cache.service';
 
+
 @Injectable()
 export class ClientesService {
 
@@ -46,4 +47,20 @@ export class ClientesService {
             data: clienteSaved,
         };
     }
+
+    async validateCliente(correo: string, password: string): Promise<any> {
+
+    const cliente = await this.clienteRepository.findByEmail(correo);
+    
+    if (!cliente) {
+        return { success: false, message: 'Correo o contraseña incorrectos.' };
+    }
+
+    
+    if (cliente.password !== password) {
+        return { success: false, message: 'Correo o contraseña incorrectos.' };
+    }
+
+    return { success: true, message: 'Cliente validado correctamente.', data: cliente };
+  }
 }

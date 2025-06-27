@@ -10,4 +10,9 @@ export class ClientesController {
   async saveCliente(cliente: any): Promise<any> {
     return this.clientesService.saveCliente(cliente);
   }
+  @MessagePattern('VALIDATE_CLIENTE')
+  async validateCliente(data: { correo: string, password: string }): Promise<any> {
+
+    return this.clientesService.validateCliente(data.correo, data.password);
+  }
 }

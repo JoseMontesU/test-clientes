@@ -14,4 +14,8 @@ export class ClienteRepository {
     async saveCliente(cliente: ClienteEntity): Promise<ClienteEntity> {
         return this.clienteRepo.save(cliente);
     }
+
+    async findByEmail(correo: string): Promise<ClienteEntity | null> {
+        return this.clienteRepo.findOne({ where: { correo } });
+    }
 }
